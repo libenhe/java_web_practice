@@ -47,4 +47,4 @@
 				private String qq;				
 			    }       
 >>>>>>> origin/master
-
+火狐浏览器提交参数会提交两次
