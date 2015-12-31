@@ -24,12 +24,15 @@ import school.libenhe.contactSystem_web.util.XmlUtil;
  */
 public class ContactDaoImpl implements ContactDao {
 
-	
+	/**
+	 * 删除联系人
+	 */
 	public void deleteContact(String id) {
 		//读取联系人
 		Document document = XmlUtil.getDocument();
 		//查询要删除联系人的id
 		Element contactElement = (Element)document.selectSingleNode("//contact[@id='"+id+"']");
+		//防止servlet传递参数空指针异常
 		if (contactElement!=null) {
 			contactElement.detach();
 		}
@@ -38,7 +41,9 @@ public class ContactDaoImpl implements ContactDao {
 		XmlUtil.writeXml(document);
 
 	}
-
+	/**
+	 * 添加联系人
+	 */
 	public void addContact(Contact contact) {
 
 		File file = new File("e:/contact.xml");
@@ -90,19 +95,21 @@ public class ContactDaoImpl implements ContactDao {
 		XmlUtil.writeXml(document);
 	}
 
-	
+	/***
+	 * 修改联系人
+	 */
 	public void updateContact(Contact contact) {
 		/**
 		 * 需求： 修改id值为2的联系人
 		 * 	1）查询id值为2的contact标签
 		 *  2）修改contact标签的内容
 		 */
-		//1.读取xml文件
+		//读取xml文件
 		Document doc = XmlUtil.getDocument();
 		
 		Element contactElem = (Element)doc.selectSingleNode("//contact[@id='"+contact.getId()+"']");
 		
-		//2.修改contact标签内容
+		//修改contact标签内容
 		contactElem.element("name").setText(contact.getName());
 		contactElem.element("gender").setText(contact.getGender());
 		contactElem.element("age").setText(contact.getAge()+"");
@@ -110,19 +117,21 @@ public class ContactDaoImpl implements ContactDao {
 		contactElem.element("email").setText(contact.getEmail());
 		contactElem.element("qq").setText(contact.getQq());
 		
-		//3.把Document写出到xml文件
+		//把Document写出到xml文件
 		XmlUtil.writeXml(doc);
 		
 	}
 
-
+	/**
+	 * 查询所有联系人
+	 */
 	public List<Contact> findAll() {
 		//读取xml文件
 		Document doc = XmlUtil.getDocument();
 		
-		//2.创建List对象
+		//创建List对象
 		List<Contact> list = new ArrayList<Contact>();
-		//3.读取contact标签
+		//读取contact标签
 		List<Element> conList = (List<Element>)doc.selectNodes("//contact");
 		for(Element e:conList){
 			//创建COntact对象
@@ -140,7 +149,9 @@ public class ContactDaoImpl implements ContactDao {
 		return list;
 	}
 
-	
+	/***
+	 * 按照id查找联系人
+	 */
 	public Contact findById(String id) {
 		Document doc = XmlUtil.getDocument();
 		Element e = (Element)doc.selectSingleNode("//contact[@id='"+id+"']");
@@ -160,7 +171,7 @@ public class ContactDaoImpl implements ContactDao {
 		return c;
 	}
 	/*public static void main(String[] args) {
-		//测试UUID
+		//测试UUID随机生成任意不重复
 		String uuid = UUID.randomUUID().toString().replace("-","");
 		System.out.println(uuid);
 	}
