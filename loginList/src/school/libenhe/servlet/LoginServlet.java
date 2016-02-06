@@ -1,7 +1,6 @@
 package school.libenhe.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,26 +24,34 @@ public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html; charset=utf-8");
+	
 		request.setCharacterEncoding("utf-8");
 		
-		String userName = request.getParameter("nserName");
+		String userName = request.getParameter("userName");
 		String pwd = request.getParameter("pwd");
-		
+		//测试
+				System.out.println("888888888888888888：  "+userName);
 		Admin admin = new Admin();
 		admin.setUserName(userName);
 		admin.setPwd(pwd);
 		
-		Admin loginInfo = adminService.findByName(admin);
 		
-		if (loginInfo == null) {
-			//登陆失败
-			url = "/Login.jsp";
-		} else {
+		try {
+			Admin loginInfo = adminService.findByName(admin);
 			
-			request.getSession().setAttribute("loginInfo",loginInfo);
+			if (loginInfo == null) {
+				//登陆失败
+				url = "/Login.jsp";
+			} else {
+				
+				request.getSession().setAttribute("loginInfo", loginInfo);
+				
+				url = "/indexServlet";
+			}
+		} catch (Exception e) {
 			
-			url = "/index";
+			e.printStackTrace();
+			url = "/error/error.jsp";
 		}
 		
 		request.getRequestDispatcher(url).forward(request, response);

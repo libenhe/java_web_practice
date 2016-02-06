@@ -21,6 +21,7 @@ public class JdbcUtils {
 	}
 	
 	public static QueryRunner getQueryRunner() {
+		
 		return new QueryRunner(dataSource);
 	}
 }

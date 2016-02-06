@@ -1,7 +1,6 @@
 package school.libenhe.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,16 +24,22 @@ public class IndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html; cahrset=utf-8");
+		
 		request.setCharacterEncoding("utf-8");
 		
-		List<Employee> list = employeeService.getAll();
-		
-		request.setAttribute("listEmp", list);
-		
-		//进入jsp页面
-		
-		url = "/list.jsp";
+		try {
+			List<Employee> list = employeeService.getAll();
+			
+			request.setAttribute("listEmp", list);
+			
+			//进入jsp页面
+			
+			url = "/list.jsp";
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			url = "/error/error.jsp";
+		}
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}

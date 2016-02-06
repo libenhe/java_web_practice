@@ -25,7 +25,7 @@
      <tr>
      <td>${varSt.count }</td>
      <td>${emp.empId }</td>
-     <td>${empName }</td>
+     <td>${emp.empName }</td>
      </tr>
      </c:forEach>
      </c:if>
