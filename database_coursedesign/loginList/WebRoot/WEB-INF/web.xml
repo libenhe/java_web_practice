@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ 	<!-- 登陆验证过滤器 -->
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>school.libenhe.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+ 
+ 
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>school.libenhe.servlet.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>school.libenhe.servlet.IndexServlet</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/indexServlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>
