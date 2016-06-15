@@ -1,0 +1,22 @@
+<c3p0-config>
+  <default-config>
+     <property name="driverClass">com.mysql.jdbc.Driver</property> 
+     <property name="jdbcUrl">jdbc:mysql:///jdbc_demo</property> 
+     <property name="user">root</property> 
+     <property name="password">root</property> 
+     <property name="initialPoolSize">5</property> 
+     <property name="maxPoolSize">10</property> 
+
+  </default-config>
+
+
+  <named-config name="oracleConfig">
+    <property name="driverClass">com.mysql.jdbc.Driver</property> 
+     <property name="jdbcUrl">jdbc:mysql:///day17</property> 
+     <property name="user">root</property> 
+     <property name="password">root</property> 
+     <property name="initialPoolSize">5</property> 
+     <property name="maxPoolSize">10</property> 
+   </named-config>
+
+</c3p0-config>
