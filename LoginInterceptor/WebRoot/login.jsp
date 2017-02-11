@@ -6,7 +6,7 @@
   <head>
   
     
-    <title> </title>
+    <title> 登陆页面</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -16,6 +16,19 @@
   </head>
   
   <body>
+  <form method="post" action="${pageContext.request.contextPath }/user_login.action">
+    用户名：<input type="text" name="admin.userName"><br/>
+    密码：  <input type="password" name="admin.pwd"><br/>
+    <input type="submit" value="登陆"><br/>
+  </form>
    
   </body>
 </html>
+
+
+
+
+
+
+
+
