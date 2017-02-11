@@ -4,6 +4,26 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	
 
+	<package name="user" extends="struts-default">
+	
+	<!-- 全局配置 -->
+	<global-results>
+	<result name="ERROR">error.jsp</result>
+	</global-results>
+	
+	
+	
+	   <action name="user_*" class="school.libenhe.action.UserAction" method="{1}">
+	
+	            <!-- 登陆失败 -->
+	       <result name="input">login.jsp</result>
+	       
+	    	    <!-- 登陆成功 -->
+	    	<result name="loginSuccess" type="redirectAction">user_list</result>
+	    	
+	         	<!-- 列表展示 -->
+	    	<result name="list">WEB-INF/list.jsp</result>
+    	</action>
+   </package>
 </struts>
