@@ -4,8 +4,21 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
 	<package name="user" extends="struts-default">
+	
+	<!-- 拦截器配置 -->
+	<interceptors>
+	  <interceptor name="loginCheck" class="school.libenhe.interceptor.UserCheckInterceptor"></interceptor>
+	    <interceptor-stack name="myStack">
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginCheck"></interceptor-ref>
+		</interceptor-stack>
+	</interceptors>
+	
+	<!-- 执行拦截器 -->
+	<!-- 当前包下所有文件都要执行此拦截器 -->
+	
+	<default-interceptor-ref name="myStack"></default-interceptor-ref>
 	
 	<!-- 全局配置 -->
 	<global-results>
@@ -15,7 +28,10 @@
 	
 	
 	   <action name="user_*" class="school.libenhe.action.UserAction" method="{1}">
-	
+	<!-- 第二种写法：
+	          这种执行方法只在action中执行myStack栈 
+	     <interceptor-ref name="myStack"></interceptor-ref>  
+	     -->
 	            <!-- 登陆失败 -->
 	       <result name="input">login.jsp</result>
 	       
