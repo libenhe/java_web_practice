@@ -15,4 +15,6 @@
    * global-results
    * global-exception-mappings
    * action*（所有action放到最后）
-   
+     
+  
+* srtuts.xml文件中拦截器执行可以有两种方式，一种是再执行所有Action之前都需要执行，第二种执行是放在指定要执行的Action里，配置执行
