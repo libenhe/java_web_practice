@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 通过常量加载资源文件 -->
+	<constant name="struts.custom.i18n.resources" value="school.libenhe.config.msg"></constant>
+	
+	
+	<package name="user" extends="struts-default">
+	<!-- 拦截器配置 -->
+	<interceptors>
+	  <interceptor name="loginCheck" class="school.libenhe.interceptor.UserCheckInterceptor"></interceptor>
+	    <interceptor-stack name="myStack">
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginCheck"></interceptor-ref>
+		</interceptor-stack>
+	</interceptors>
+	
+	<!-- 执行拦截器 -->
+	<!-- 当前包下所有文件都要执行此拦截器 -->
+	
+	<default-interceptor-ref name="myStack"></default-interceptor-ref>
+	
+	<!-- 全局配置 -->
+	<global-results>
+	<result name="ERROR">error.jsp</result>
+	</global-results>
+	
+	
+	
+	   <action name="user_*" class="school.libenhe.action.UserAction" method="{1}">
+	<!-- 第二种写法：
+	          这种执行方法只在action中执行myStack栈 
+	     <interceptor-ref name="myStack"></interceptor-ref>  
+	     -->
+	            <!-- 登陆失败 -->
+	       <result name="input">login.jsp</result>
+	       
+	    	    <!-- 登陆成功 -->
+	    	<result name="loginSuccess" type="redirectAction">user_list</result>
+	    	
+	         	<!-- 列表展示 -->
+	    	<result name="list">WEB-INF/list.jsp</result>
+    	</action>
+   </package>
+</struts>
