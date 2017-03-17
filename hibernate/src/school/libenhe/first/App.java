@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
+
 /**
  * @author Li Benhe Email: libenhe919@gmail.com
  * @version 2017-3-16 下午9:04:01
@@ -32,6 +33,7 @@ public class App {
 	   Transaction tx = session.beginTransaction();
 	   
 	   session.save(employee);
+	   tx.commit();
 	   session.close();
 	   sf.close();
 	   

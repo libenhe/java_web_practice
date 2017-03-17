@@ -17,6 +17,6 @@
 		<!-- 自动建表  -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
-		<mapping resource="/school/libenhe/first/Employee.hbm.xml"/>
+		<mapping resource="school/libenhe/first/Employee.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
