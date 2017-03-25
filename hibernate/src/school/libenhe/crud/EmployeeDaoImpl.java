@@ -3,6 +3,7 @@ package school.libenhe.crud;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -56,26 +57,81 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 
 	@Override
 	public Employee findById(Serializable id) {
+		Session session = null;
+		Transaction transaction = null;
+		try {
+		    session = HibernateUtils.getSession();
+		    transaction = session.beginTransaction();
+			return (Employee) session.get(Employee.class, id);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			transaction.commit();
+			session.close();
+		} 
 		
-		return null;
+		
 	}
 
 	@Override
 	public List<Employee> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+		    session = HibernateUtils.getSession();
+		    transaction = session.beginTransaction();
+			Query query = session.createQuery("from Employee");
+			return query.list();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			transaction.commit();
+			session.close();
+		} 
+		
 	}
 
 	@Override
 	public List<Employee> getAll(String employeeName) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+		    session = HibernateUtils.getSession();
+		    transaction = session.beginTransaction();
+			Query query = session.createQuery("from Employee where empName=?");
+			//参数索引从0开始
+			query.setParameter(0, employeeName);
+			return query.list();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			transaction.commit();
+			session.close();
+		} 
+		
 	}
 
 	@Override
 	public List<Employee> getAll(int index, int count) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session session = null;
+		Transaction transaction = null;
+		try {
+		    session = HibernateUtils.getSession();
+		    transaction = session.beginTransaction();
+			Query query = session.createQuery("from Employee");
+			//设置分页参数
+			query.setFirstResult(index);
+			query.setMaxResults(count);
+			List<Employee> list = query.list();
+			return list;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			transaction.commit();
+			session.close();
+		} 
+		
 	}
 
 	@Override
