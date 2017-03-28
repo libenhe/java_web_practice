@@ -14,34 +14,34 @@
              采用 "srevlet 和 xml" (“模拟数据库存储用户数据”)，主页面为查看所有联系人，  
          并实现添加、修改、删除、查看所有联系人功能。
 
-####(3)contactSystem_JSP:  
-         "采用JSP+XML",相比(2)将servlet页面改成JSP显示页面，同时添加联系人业务逻辑处理类service，  
+#### (3)contactSystem_JSP:  
+          "采用JSP+XML",相比(2)将servlet页面改成JSP显示页面，同时添加联系人业务逻辑处理类service，  
          处理逻辑任务，增加联系人姓名重复判断功能，增加自定义异常类。
 
-####(4)contactSystem_Jdbc:  
+#### (4)contactSystem_Jdbc:  
          相比(3)dao层采用JDBC链接mysql数据库，添加JdbcUtil工具类
 
-####(5)webLogin  
+#### (5)webLogin  
          注册采用mysql数据库。判断用户名是否被注册
  
 
-####(6)webLogin_beanUtil_dbutil
+#### (6)webLogin_beanUtil_dbutil
          相对与webLogin，使用Beanutils进行数据封装和dbutils组件处理mysql数据库
  
 
-####(7)loginList 
+#### (7)loginList 
           管理员登陆查看实验室学生名单
  
 
-####(8) struts拦截器LoginInterceptor
+#### (8) struts拦截器LoginInterceptor
 
           用户登录
 
-####(9) struts国际化应用
+#### (9) struts国际化应用
 
           在（8）的基础上增加国际化，用到国际化标签
 
-####(10)  hibernate
+#### (10)  hibernate
 
           练习
  
