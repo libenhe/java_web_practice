@@ -20,9 +20,15 @@ public class App {
 	
 	/**
 	 * 保存：部门：（以一对一的方式操作）
+	 * 执行语句
+	 * Hibernate: insert into t_employee (empName, dept_id) values (?, ?)
+     * Hibernate: insert into t_employee (empName, dept_id) values (?, ?)
+     * Hibernate: insert into t_dept (deptName) values (?)
+     * Hibernate: update t_employee set deptId=? where empId=?
+     * Hibernate: update t_employee set deptId=? where empId=?
 	 */
 	@Test
-	public void save() {
+	public void save() throws Exception{
 		
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -41,6 +47,34 @@ public class App {
 		session.save(employee_fl);
 		session.save(employee_lbh);
 		session.save(dept);
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	/**
+	 * 多对一执行操作
+	 * 
+	 */
+	    @Test
+	public void saveManyTwoOne() {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		Dept dept = new Dept();
+		dept.setDeptName("前端开发部");
+		Employee employee_lx = new Employee();
+		employee_lx.setEmpName("李杏");
+		Employee employee_tck = new Employee();
+		employee_tck.setEmpName("谭琛琨");
+		employee_lx.setDept(dept);
+		employee_tck.setDept(dept);
+		
+		
+		//保存:现存One后存Many
+		
+		session.save(dept);
+		session.save(employee_tck);
+		session.save(employee_lx);
 		
 		session.getTransaction().commit();
 		session.close();
