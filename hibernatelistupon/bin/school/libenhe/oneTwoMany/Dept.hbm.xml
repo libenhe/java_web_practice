@@ -18,7 +18,7 @@
     
     --> 
     <set name="emps" table="t_employee">
-    <key column="deptId"></key>
+    <key column="dept_id"></key>
     <one-to-many class="Employee"/>
     </set>
    
