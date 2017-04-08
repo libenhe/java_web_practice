@@ -21,7 +21,7 @@
         对应的外键字段dept_id
         部门的类型
  -->
-  <many-to-one name="dept" column="dept_id" class="Dept"></many-to-one>
+  <many-to-one name="dept"  column="dept_id"  class="Dept"></many-to-one>
 </class>
 
 </hibernate-mapping>
