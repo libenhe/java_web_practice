@@ -14,11 +14,36 @@ import java.util.Set;
 public class Developer {
 
 	private int  devId;
-	private int  devName;
+	private String  devName;
 	
 	// 开发人员，参数的多个项目
-		private Set<Project> projects = new HashSet<Project>();
-	
+    private Set<Project> projects = new HashSet<Project>();
+
+	public int getDevId() {
+		return devId;
+	}
+
+	public void setDevId(int devId) {
+		this.devId = devId;
+	}
+
+	public String getDevName() {
+		return devName;
+	}
+
+	public void setDevName(String devName) {
+		this.devName = devName;
+	}
+
+	public Set<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
+	}
+	    
+		
 }
 
 
