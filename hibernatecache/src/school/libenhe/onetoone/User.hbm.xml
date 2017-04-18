@@ -3,13 +3,16 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="school.libenhe.status">
+<hibernate-mapping package="school.libenhe.onetoone">
 	
 	<class name="User" table="t_user">
 		<id name="userId" column="id">
 			<generator class="native"></generator>
 		</id>	
-		<property name="userName"></property>
+		<property name="userName" length="20"></property>
+		
+		<!-- 一对一映射 -->
+		<one-to-one name="idCard" class="IdCard"></one-to-one>
 	</class>
 	
 
