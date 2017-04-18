@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="school.libenhe.onetoone`">
+	
+	<class name="IdCard" table="t_IdCard">
+		<id name="cardNum" column="id">
+			<generator class="native"></generator>
+		</id>	
+		<property name="place" length="20"></property>
+	</class>
+	
+
+</hibernate-mapping>
