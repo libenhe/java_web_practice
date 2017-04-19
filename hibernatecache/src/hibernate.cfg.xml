@@ -15,10 +15,10 @@
 		<property name="hibernate.show_sql">true</property>
 		
 		<!-- 自动建表  -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
-		<!-- 
-		<mapping resource="school/libenhe/oneTwoMany/Employee.hbm.xml"/>
-	    <mapping resource="school/libenhe/oneTwoMany/Dept.hbm.xml"/>
-		 -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		 <!--  
+		<mapping resource="school/libenhe/onetoone/IdCard.hbm.xml"/>
+	    <mapping resource="school/libenhe/onetoone/User.hbm.xml"/>
+		-->
 	</session-factory>
 </hibernate-configuration>
