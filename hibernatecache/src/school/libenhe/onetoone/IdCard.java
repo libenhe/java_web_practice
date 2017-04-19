@@ -8,6 +8,7 @@ public class IdCard {
 	private String place; //  身份证地址
 	// 身份证与用户，一对一的关系
 	private User user;
+	
 	public String getCardNum() {
 		return cardNum;
 	}
