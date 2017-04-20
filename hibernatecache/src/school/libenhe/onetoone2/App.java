@@ -1,4 +1,4 @@
-package school.libenhe.onetoone;
+package school.libenhe.onetoone2;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * 
  * @ClassName: App 
- * @Description: 测试类 外键唯一
+ * @Description: 测试类
  * @author Li Benhe Email: libenhe919@gmail.com
  * @date 2017-4-18 下午3:37:53
  *
@@ -32,11 +32,11 @@ public class App {
 		session.beginTransaction();
 		
 		User user = new User();
-		user.setUserName("李本贺");
+		user.setUserName("李本贺2");
 		
 		IdCard idCard = new IdCard();
 		idCard.setCardNum("230622XXXXXX7056");
-		idCard.setPlace("黑龙江");
+		idCard.setPlace("黑龙江2");
 		
 		idCard.setUser(user);
 		
