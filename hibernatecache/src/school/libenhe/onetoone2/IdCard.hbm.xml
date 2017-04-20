@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="school.libenhe.onetoone2">
+	
+	<class name="IdCard" table="t_IdCard">
+		<id name="user_id">
+			<generator class="foreign">
+			     <param name="property">user</param>
+			</generator>
+		</id>	
+		<property name="cardNum" length="20"></property>
+		<property name="place" length="20"></property>
+		
+		<!-- 
+			一对一映射，有外键方
+			基于主键映射
+			 constrained="true" 
+		 -->
+		<one-to-one name="user" class="User" constrained="true"  cascade="save-update"></one-to-one>
+		</class>	
+	
+
+</hibernate-mapping>
