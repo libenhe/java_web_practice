@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="school.libenhe.component">
+	
+	<class name="Car" table="t_car">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>	
+		<property name="name" length="20"></property>
+		
+		<!-- 
+			组件映射
+		 -->
+		<component name="wheel">
+		    <property name="count"></property>
+		     <property name="size"></property>
+		</component>
+	</class>
+	
+
+</hibernate-mapping>
