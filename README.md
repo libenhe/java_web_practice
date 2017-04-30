@@ -46,6 +46,12 @@
           练习
           
  
+#### (11)  hibernatecache  
+   
+ 
+
+         
+          
 
  
 
