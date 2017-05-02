@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping 
+   package="school.libenhe.ManyTwoMany">
+	
+	<class name="Project" table="t_project">
+		
+		<id name="proId">
+			 <generator class="native"/>
+		</id>	
+    <property name="proName" length="20" ></property>
+   
+	<!-- 
+			多对多映射:
+			1.  映射的集合属性： “developers”
+			2.  集合属性，对应的中间表： “t_relation”
+			3. 外键字段:  prjId
+			4. 外键字段，对应的中间表字段:  did
+			5.   集合属性元素的类型
+		 -->
+		 <set name="developers" table="t_relation" >
+		 <key column="prid"></key>
+ <many-to-many column="did" class="Developer"></many-to-many>
+ 	     </set>
+</class>
+
+</hibernate-mapping>

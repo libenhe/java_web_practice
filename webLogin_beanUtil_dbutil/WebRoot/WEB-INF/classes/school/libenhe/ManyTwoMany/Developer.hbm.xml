@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping 
+	package="school.libenhe.ManyTwoMany">
+	
+	<class name="Developer" table="t_developer">
+		
+		<id name="devId" >
+			 <generator class="native"/>
+		</id>	
+    <property name="devName" length="20" ></property>
+  	<!-- 
+			多对多映射配置： 员工方
+				name  指定映射的集合属性
+				table 集合属性对应的中间表
+				key   指定中间表的外键字段(引用当前表t_developer主键的外键字段)
+				many-to-many
+					column 指定外键字段对应的项目字段
+					class  集合元素的类型
+		 -->
+    <set name="projects" table="t_relation" inverse="false">
+    <key column="did"></key>
+    <many-to-many column="prid" class="Project" ></many-to-many>
+    </set>
+   
+	</class>
+
+
+
+</hibernate-mapping>

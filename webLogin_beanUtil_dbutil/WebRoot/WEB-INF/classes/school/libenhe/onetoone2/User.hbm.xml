@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="school.libenhe.onetoone2">
+	
+	<class name="User" table="t_user">
+		<id name="userId" column="id">
+			<generator class="native"></generator>
+		</id>	
+		<property name="userName" length="20"></property>
+		
+		<!-- 一对一映射 -->
+		<one-to-one name="idCard" class="IdCard"></one-to-one>
+	</class>
+	
+
+</hibernate-mapping>

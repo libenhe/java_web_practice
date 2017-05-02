@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="school.libenhe.onetoone">
+	
+	<class name="IdCard" table="t_IdCard">
+		<id name="cardNum">
+			<generator class="assigned"></generator>
+		</id>	
+		<property name="place" length="20"></property>
+		
+		<!-- 
+			一对一映射，有外键方
+			unique="true"   给外键字段添加唯一约束
+		 -->
+		 <many-to-one name="user" unique="true" column="user_id" class="User" cascade="save-update"></many-to-one>
+		</class>	
+	
+
+</hibernate-mapping>
