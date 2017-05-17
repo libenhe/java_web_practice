@@ -1,4 +1,4 @@
-﻿###       hibernatehql语句 查询          
+﻿###       hibernatehql语句 查询。          
 
    
  
