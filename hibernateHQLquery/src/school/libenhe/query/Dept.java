@@ -4,7 +4,8 @@ import java.util.Set;
 /**
  * 
  * @ClassName: Dept 
- * @Description: 部门
+ * @Descript.
+ * ion: 部门
  * @author Li Benhe Email: libenhe919@gmail.com
  * @date 2017-5-2 下午7:58:24
  *
