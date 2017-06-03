@@ -46,7 +46,7 @@
           练习
           
  
-#### (11)  hibernatecache  
+#### (11)  hibernatecache  查询
    
  
 
