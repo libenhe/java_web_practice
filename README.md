@@ -47,6 +47,8 @@
           
  
 #### (11)  hibernatecache  查询
+
+#### (12)  hibernatecache  (session\缓存）
    
   
 
