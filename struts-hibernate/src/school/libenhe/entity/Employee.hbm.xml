@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="school.libenhe.entity">
+	
+	<class name="Employee" table="t_employee" >
+		<id name="empId">
+			<generator class="native"></generator>
+		</id>	
+		<property name="deptName" length="20"></property>
+		
+		 <set name="emps">
+		 	 <key column="dept_id"></key>
+		 	 <one-to-many class="Employee"/>
+		 </set>
+	</class>
+	
+</hibernate-mapping>
