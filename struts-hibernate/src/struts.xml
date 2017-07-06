@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="dept" extends="struts-default">
+
+		<!-- 拦截器配置 -->
+		<interceptors>
+			<interceptor name="sessionInterceptor" class="cn.itcast.interceptor.SessionInterceptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		
+		<!-- action配置 -->
+		<action name="show" class="cn.itcast.action.DeptAction">
+			<result name="success">/index.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
