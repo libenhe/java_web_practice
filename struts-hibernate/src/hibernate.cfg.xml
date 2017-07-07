@@ -16,8 +16,8 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<!-- 加载映射 -->
-		<mapping resource="cn/itcast/entity/Dept.hbm.xml"/>
-		<mapping resource="cn/itcast/entity/Employee.hbm.xml"/>
+		<mapping resource="school/libenhe/entity/Dept.hbm.xml"/>
+		<mapping resource="school/libenhe/entity/Employee.hbm.xml"/>
 		
 	</session-factory>
 </hibernate-configuration>
