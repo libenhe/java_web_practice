@@ -9,12 +9,10 @@
 		<id name="empId">
 			<generator class="native"></generator>
 		</id>	
-		<property name="deptName" length="20"></property>
+		<property name="empName" length="20"></property>
+		<property name="salary" length="20"></property>
 		
-		 <set name="emps">
-		 	 <key column="dept_id"></key>
-		 	 <one-to-many class="Employee"/>
-		 </set>
+		 <many-to-one name="dept" column="dept_id" class="Dept"></many-to-one>
 	</class>
 	
 </hibernate-mapping>
