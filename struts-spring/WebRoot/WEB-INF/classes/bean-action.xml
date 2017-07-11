@@ -14,7 +14,7 @@
          http://www.springframework.org/schema/tx
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<bean id="userAction" class="school.libenhe.action.userAction" scope="prototype">
+<bean id="userAction" class="school.libenhe.action.UserAction" scope="prototype">
 <property name="userService" ref="userService"></property>
 </bean>
 
