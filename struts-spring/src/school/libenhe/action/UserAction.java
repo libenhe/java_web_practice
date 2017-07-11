@@ -14,7 +14,7 @@ public class UserAction extends ActionSupport{
 		this.userService = userService;
 	}
 	
-	public String execute() {
+	public String execute() throws Exception{
 		userService.save();
 		return SUCCESS;
 	}
