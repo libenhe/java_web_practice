@@ -7,7 +7,7 @@
 
 	<package name="user" extends="struts-default">
 
-		<action name="user" class="school.libenhe.action.userAction" method="execute">
+		<action name="user" class="school.libenhe.action.UserAction" method="execute">
 			<result name="success">/index.jsp</result>
 		</action>
 
