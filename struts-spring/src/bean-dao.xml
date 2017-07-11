@@ -13,7 +13,7 @@
          http://www.springframework.org/schema/aop/spring-aop.xsd
          http://www.springframework.org/schema/tx
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
-<bean id="userDao" class="school.libenhe.dao.Userdao" ></bean>
+<bean id="userDao" class="school.libenhe.dao.UserDao" ></bean>
 	
 	
 </beans>     

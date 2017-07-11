@@ -15,7 +15,7 @@
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	
-<bean id="userService" class="school.libenhe.service.userService">
+<bean id="userService" class="school.libenhe.service.UserService">
 <property name="userDao" ref="userDao"></property>
 </bean>
 	
