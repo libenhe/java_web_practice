@@ -1,4 +1,4 @@
-### struts和spring整合
+### struts和spring整合案例
          
           
 
