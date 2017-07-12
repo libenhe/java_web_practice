@@ -1,4 +1,5 @@
-### struts和hibernate整合
+### struts和hibernate整合案例
+
          
           
 
