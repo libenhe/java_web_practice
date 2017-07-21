@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- dao 实例 -->
+	<bean id="deptDao" class="school.libenhe.dao.DeptDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- service 实例 -->
+	<bean id="deptService" class="school.libenhe.service.DeptService">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	
+
+	
+	<!-- ###########Spring与Hibernate整合  start########### -->
+	
+	<!-- 方式（1）直接加载hibernate.cfg.xml文件的方式整合-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>    
+	
+	
+		
+	
+	<!-- ###########Spring与Hibernate整合  end########### -->
+	
+	<!-- 事务配置 -->
+	<!-- a. 配置事务管理器类 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- b. 配置事务增强(拦截到方法后如果管理事务?) -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="*" read-only="false"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- c. Aop配置 -->
+	<aop:config>
+		 <aop:pointcut expression="execution(*  school.libenhe.service.*.*(..))" id="pt"/>
+		 <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"/>
+	</aop:config>
+	
+</beans>     
+
+
+
+
+
+
+
+
+
+
