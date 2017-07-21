@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 数据库连接信息 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>	
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>	
+		<property name="hibernate.connection.url">jdbc:mysql:///hib_demo</property>	
+		<property name="hibernate.connection.username">root</property>	
+		<property name="hibernate.connection.password">root</property>	
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 加载映射 -->
+		<mapping resource="school/libenhe/entity/Dept.hbm.xml"/>
+		
+	</session-factory>
+</hibernate-configuration>
+
