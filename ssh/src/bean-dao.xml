@@ -14,7 +14,9 @@
          http://www.springframework.org/schema/tx
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-
+<bean id="employeeDao" class="school.libenhe.dao.EmployeeDao">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
 	
 </beans>     
 
