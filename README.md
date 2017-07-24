@@ -45,10 +45,18 @@
 
           练习
           
- 
+  
+  
 #### (11)  hibernatecache  查询
-
-#### (12)  hibernatecache  (session\缓存）
+  
+  
+#### (12)  hibernatecache  (session\缓存）  
+  
+#### (13)  struts-hibernate整合  
+#### (14)  struts-spring整合  
+#### (15)  spring-hibernate整合  
+#### (16_ssh) struts、hibernate、spring 整合 
+  
    
   
 
