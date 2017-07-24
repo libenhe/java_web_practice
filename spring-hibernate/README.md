@@ -1,1 +1,1 @@
-### spring与hibernate整合
+### spring与hibernate整合案例
