@@ -16,15 +16,15 @@
 
 	<!-- Dao 注入 SessionFactory -->
 	
-	<bean id="adminDao" class="cn.itcast.dao.impl.AdminDao">
+	<bean id="adminDao" class="school.libenhe.dao.impl.AdminDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="deptDao" class="cn.itcast.dao.impl.DeptDao">
+	<bean id="deptDao" class="school.libenhe.dao.impl.DeptDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="employeeDao" class="cn.itcast.dao.impl.EmployeeDao">
+	<bean id="employeeDao" class="school.libenhe.dao.impl.EmployeeDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>     

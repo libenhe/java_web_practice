@@ -16,7 +16,7 @@
 
 	<!-- Service 需要注入 Dao -->
 	
-	<bean id="adminService" class="cn.itcast.service.impl.AdminService">
+	<bean id="adminService" class="school.libenhe.service.impl.AdminService">
 		<property name="adminDao" ref="adminDao"></property>
 	</bean>
 	

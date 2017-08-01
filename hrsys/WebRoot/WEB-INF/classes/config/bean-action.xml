@@ -17,7 +17,7 @@
 	<!-- Action中需要注入Service -->
 	
 	<!-- 1. 员工管理模块 -->
-	<bean id="employeeAction" class="cn.itcast.action.EmployeeAction">
+	<bean id="employeeAction" class="school.libenhe.action.EmployeeAction">
 		<property name="employeeService" ref="employeeService"></property>
 		<property name="deptService" ref="deptService"></property>
 	</bean>
