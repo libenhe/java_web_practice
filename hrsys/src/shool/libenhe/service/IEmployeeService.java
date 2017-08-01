@@ -1,5 +1,7 @@
 package shool.libenhe.service;
 
+import java.util.List;
+
 import shool.libenhe.entity.Employee;
 
 /**
@@ -28,11 +30,28 @@ public interface IEmployeeService {
 	 * @param emp
 	 */
 	void update(Employee emp);
+	
 	/**
-	 *  
+	 *  根据主键查询
 	 * @param id
 	 * @return
 	 */
 	Employee findById(int id);
+	/**
+	 * 查询全部
+	 * @return 查询结果
+	 */
+	List<Employee> getAll();
 	
+	/**
+	 * 根据员工姓名查询
+	 * @param employeeName 员工姓名
+	 * @return
+	 */
+	List<Employee> getAll(String employeeName);
+	/**
+	 * 删除多个员工
+	 * @param ids
+	 */
+	void deleteMany(int[] ids);
 }
