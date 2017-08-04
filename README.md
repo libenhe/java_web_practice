@@ -55,7 +55,7 @@
 #### (13)  struts-hibernate整合  
 #### (14)  struts-spring整合  
 #### (15)  spring-hibernate整合  
-#### (16_ssh) struts、hibernate、spring 整合 
+#### (16_hrsys) struts、hibernate、spring 整合 
   
    
   
