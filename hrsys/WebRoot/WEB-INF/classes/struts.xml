@@ -6,6 +6,14 @@
 <struts>
 	<package name="emp" extends="struts-default">
 
+		<!-- 拦截器配置 -->
+		<interceptors>
+		   <interceptor name="userInterceptor" class="school.libenhe.action.UserInterceptor"></interceptor>
+			<interceptor-stack name="mystack">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="userInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
 		<!-- 全局视图 -->
 		<global-results>
 			<result name="success">/index.jsp</result>
