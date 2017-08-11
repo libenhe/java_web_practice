@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="emp" extends="struts-default">
+
+		<!-- 拦截器配置 -->
+		<interceptors>
+		   <interceptor name="userInterceptor" class="school.libenhe.action.UserInterceptor"></interceptor>
+			<interceptor-stack name="mystack">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="userInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 全局视图 -->
+		<global-results>
+			<result name="success">/index.jsp</result>
+
+			<!-- 错误视图配置 -->
+			<result name="null">/error/null.jsp</result>
+			<result name="error">/error/error.jsp</result>
+		</global-results>
+
+		<!-- 全局异常 -->
+		<global-exception-mappings>
+			<!-- result 会取找全局视图的名称 -->
+			<exception-mapping result="null"
+				exception="java.lang.NullPointerException"></exception-mapping>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+
+		<!-- Ation实例交给spring容器创建 -->
+		<action name="emp_*" class="employeeAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/WEB-INF/list.jsp</result>
+
+			<!-- 进入添加页面视图 -->
+			<result name="add">/WEB-INF/add.jsp</result>
+
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">emp_list</result>
+
+			<!-- 进入修改页面 -->
+			<result name="edit">/WEB-INF/edit.jsp</result>
+		</action>
+	</package>
+</struts>
