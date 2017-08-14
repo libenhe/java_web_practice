@@ -5,7 +5,7 @@
     <title>员工管理系统</title>
   </head>
   <body>
-		<form action="${pageContext.request.contextPath}/add.do" method="POST">
+		<form action="${pageContext.request.contextPath}/add.action" method="POST">
 		<table border="2" align="center">
 			<tr>
 				<th>姓名</th>
