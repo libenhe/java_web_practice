@@ -5,7 +5,56 @@
 <configuration>
 	
 	<!-- 加载映射文件 -->
+
+	
+	<!-- 加载类路径下的属性文件 -->
+	<properties resource="db.properties"/>
+
+	
+	<!-- 设置类型别名 -->
+	<typeAliases>
+		<typeAlias type="school.libenhe.mybatis.Student" alias="student"/>
+	</typeAliases>
+	
+
+	<!-- 设置一个默认的连接环境信息 -->
+	<environments default="mysql_developer">
+	
+	
+		<!-- 连接环境信息，取一个任意唯一的名字 -->
+		<environment id="mysql_developer">
+			<!-- mybatis使用jdbc事务管理方式 -->
+			<transactionManager type="jdbc"/>
+			<!-- mybatis使用连接池方式来获取连接 -->
+			<dataSource type="pooled">
+				<!-- 配置与数据库交互的4个必要属性 -->
+				<property name="driver" value="${mysql.driver}"/>
+				<property name="url" value="${mysql.url}"/>
+				<property name="username" value="${mysql.username}"/>
+				<property name="password" value="${mysql.password}"/>
+			</dataSource>
+		</environment>
+		
+		
+		
+		
+		<!-- 连接环境信息，取一个任意唯一的名字 -->
+		<environment id="oracle_developer">
+			<!-- mybatis使用jdbc事务管理方式 -->
+			<transactionManager type="jdbc"/>
+			<!-- mybatis使用连接池方式来获取连接 -->
+			<dataSource type="pooled">
+				<!-- 配置与数据库交互的4个必要属性 -->
+				<property name="driver" value="${oracle.driver}"/>
+				<property name="url" value="${oracle.url}"/>
+				<property name="username" value="${oracle.username}"/>
+				<property name="password" value="${oracle.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
 <mappers>
+
 	<mapper resource="school/libenhe/mybatis/StudentMapper.xml"/>
 
 </mappers>
