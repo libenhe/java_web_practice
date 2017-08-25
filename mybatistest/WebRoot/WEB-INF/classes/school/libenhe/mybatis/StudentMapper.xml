@@ -3,12 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="school.libenhe.mybatis.Student">
 
-<mapper>
-
-
-
-
+	<!-- resultMap标签:映射实体与表 
+		 type属性：表示实体全路径名
+		 id属性：为实体与表的映射取一个任意的唯一的名字
+	-->
+	<resultMap type="student" id="studentMap">
+	
+	 <id property="id" column="s_id"/>
+	 <result property="name" column="s_name"/>
+	 <result property="sal" column="s_sal"/>
+	</resultMap>
+	
+	<!-- 
+		insert标签：要书写insert这么一个sql语句
+		id属性：为insert这么一个sql语句取一个任意唯一的名字
+		parameterType:要执行的dao中的方法的参数，如果是类的话，必须使用全路径类
+	-->
+	<insert id="add" parameterType="student">
+		insert into students(s_id,s_name,s_sal) values(#{id},#{name},#{sal})
+	</insert>
 
 
 </mapper>
