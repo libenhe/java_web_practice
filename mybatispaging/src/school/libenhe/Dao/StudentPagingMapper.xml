@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="school.libenhe.entity.Student">	
+
+	<resultMap type="student" id="studentMap">
+		<id property="id" column="students_id"/>
+		<result property="name" column="students_name"/>
+		<result property="sal" column="students_sal"/>
+	</resultMap>
+
+    <insert id="add" parameterType="student">
+		insert into students(s_id,s_name,s_sal) values(#{id},#{name},#{sal})
+	</insert>
+	
+	
+</mapper>
+
+
+
+
