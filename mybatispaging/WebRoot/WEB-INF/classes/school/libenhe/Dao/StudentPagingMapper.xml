@@ -5,14 +5,28 @@
 <mapper namespace="school.libenhe.entity.Student">	
 
 	<resultMap type="student" id="studentMap">
-		<id property="id" column="students_id"/>
-		<result property="name" column="students_name"/>
-		<result property="sal" column="students_sal"/>
+		<id property="id" column="s_id"/>
+		<result property="name" column="s_name"/>
+		<result property="sal" column="s_sal"/>
 	</resultMap>
 
     <insert id="add" parameterType="student">
-		insert into students(s_id,s_name,s_sal) values(#{id},#{name},#{sal})
+		insert into students(s_id,s_name,s_sal) values(#{id},#{name},#{sal});
 	</insert>
+	<!-- 无条件分页映射 -->
+	<select id="findAllPaging" parameterType="map" resultMap="studentMap">
+	   select s_id, s_name, s_sal 
+	   from students
+	   limit #{mstart}, #{msize}
+	</select>
+	<!-- 有条件分页映射 -->
+	<select id="findAllNamePaging" parameterType="map" resultMap="studentMap">
+	  select s_id, s_name, s_sal 
+	   from students
+	   where s_name like #{mname}
+	   limit #{mstart}, #{msize}
+	</select>
+	
 	
 	
 </mapper>
