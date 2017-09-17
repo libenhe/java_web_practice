@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studentNamesapce">
+
+	<resultMap type="student" id="studentMap">
+		<id property="id" column="s_id" />
+		<result property="name" column="s_name" />
+		<result property="sal" column="s_sal" />
+	</resultMap>
+
+
+
+<!-- 动态查询所有 -->
+
+	<select id="findAll" parameterType="map" resultMap="studentMap">
+		select * from students
+		<where>
+			<if test="pid != null">and s_id = #{pid}</if>
+			<if test="pname != null">and s_name = #{pname}</if>
+			<if test="psal != null">and s_sal = #{psal}</if>
+
+		</where>
+	</select>
+	
+	
+	<!-- 动态根据id更新 -->
+	<!-- set标签自动判断哪个是最后一个字段，会自动去掉最后一个,号 -->
+	<update id="update" parameterType="map">
+		update students
+		<set>
+			<if test="pname != null">s_name = #{pname},</if>
+			<if test="psal != null">s_sal = #{psal},</if>
+		</set>
+		where s_id = #{pid}
+	</update>
+
+<!-- 动态批量删除 -->
+
+<delete id="deleteList" >
+delete from students where s_id in
+        <!-- foreach用于迭代数组元素
+			 open表示开始符号
+			 close表示结束符合
+			 separator表示元素间的分隔符
+			 item表示迭代的数组，属性值可以任意，但提倡与方法的数组名相同
+			 #{ids}表示数组中的每个元素值
+		 -->
+   <foreach collection="arrays" open="(" close=")" separator="," item="ids">
+   
+   #{ids}
+   </foreach>
+
+</delete>
+
+
+</mapper>
+
+
+
+
