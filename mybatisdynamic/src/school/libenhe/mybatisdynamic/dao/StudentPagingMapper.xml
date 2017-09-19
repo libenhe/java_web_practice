@@ -47,14 +47,35 @@ delete from students where s_id in
 			 item表示迭代的数组，属性值可以任意，但提倡与方法的数组名相同
 			 #{ids}表示数组中的每个元素值
 		 -->
-   <foreach collection="arrays" open="(" close=")" separator="," item="ids">
+   <foreach collection="list" open="(" close=");" separator="," item="ids">
    
    #{ids}
    </foreach>
 
 </delete>
 
+<!-- 动态插入 -->
 
+<sql id="key">
+<!-- 去掉最后一个“，” -->
+<trim suffixOverrides=",">
+<if test="id != null">s_id,</if>
+<if test="name != null">s_name,</if>
+<if test="sal != null">s_sal,</if>
+</trim>
+</sql>
+
+<sql id="value">
+<trim suffixOverrides=",">
+<if test="id != null">#{id},</if>
+<if test="name != null">#{name},</if>
+<if test="sal != null">#{sal},</if>
+</trim>
+</sql>
+
+<insert id="dyInsert" parameterType="school.libenhe.mybatisdynamic.entity.Student">
+insert into students(<include refid="key"/>) values(<include refid="value"/>)
+</insert>
 </mapper>
 
 
