@@ -1,6 +1,5 @@
 package school.libenhe.mybatisdynamic.dao;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +23,9 @@ public class StudentDao {
 	/**
 	 * 查询所有
 	 * 
-	 * @param id
-	 *            ID编号
-	 * @param name
-	 *            姓名
-	 * @param sal
-	 *            薪水
+	 * @param id ID编号
+	 * @param name 姓名
+	 * @param sal  薪水
 	 * @return
 	 * @throws Exception
 	 */
@@ -78,6 +74,7 @@ public class StudentDao {
 			map.put("psal", sal);
 
 			sqlSession.update("studentNamesapce.update", map);
+			sqlSession.commit();
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -100,6 +97,7 @@ public class StudentDao {
 			sqlSession = MybatisUtil.getSqlSession();
 
 		sqlSession.delete("studentNamesapce.deleteList", ids);
+		sqlSession.commit();
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -110,6 +108,29 @@ public class StudentDao {
 		}
 	}
 
+	/**
+	 * 动态插入
+	 * @param student
+	 * @throws Exception
+	 */
+	public void dyInsert(Student student) throws Exception {
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = MybatisUtil.getSqlSession();
+			
+			sqlSession.insert("studentNamesapce.dyInsert", student);
+			sqlSession.commit();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			sqlSession.rollback();
+			throw e;
+		} finally {
+			MybatisUtil.closeSqlSession();
+		}
+		
+	}
 	
 	
 	
@@ -125,38 +146,48 @@ public class StudentDao {
 	 * 
 	 * @throws Exception
 	 */
-	/**
-	 * @Test public void findAllTest() throws Exception { StudentDao studentDao
-	 *       = new StudentDao(); List<Student> list =
-	 *       studentDao.findAll(null,"金三胖" , null); for (Student student : list)
-	 *       { System.out.println(student.getId() +"_"+
-	 *       student.getName()+": 薪水为"+ student.getSal()+"元。"); } }
-	 */
+	
+//	  @Test 
+//	  public void findAllTest() throws Exception { 
+//		  StudentDao studentDao
+//	        = new StudentDao(); List<Student> list =
+//	       studentDao.findAll(null,"金三胖" , null); for (Student student : list)
+//	       { System.out.println(student.getId() +"_"+
+//	       student.getName()+": 薪水为"+ student.getSal()+"元。"); } }
+	 
 
 	/**
 	 * 动态根据id更新测试
 	 * 
 	 * @throws Exception
 	 */
-	
-	    @Test 
-	 public void updateTest() throws Exception {
-	    StudentDao studentDao =new StudentDao(); 
-	    	studentDao.update(1, "战斗民族", null); 
-	    	}
+//
+//	    @Test 
+//	public void updateTest() throws Exception {
+//		StudentDao studentDao = new StudentDao();
+//		studentDao.update(1, "战斗民族", null);
+//	}
 	 
 	 /**
 	 * 动态批量删除测试
 	 * @throws Exception
 	 */
+//	@Test
+//	public void deleteTest() throws Exception {
+//		StudentDao dao = new StudentDao();
+//		List<Integer> ids = new ArrayList<Integer>();
+//		ids.add(2);
+//		ids.add(4);
+//		
+//		dao.deletList(ids);
+//	}
+	/**
+	 * 动态插入测试
+	 * @throws Exception
+	 */
 	@Test
-	public void deleteTest() throws Exception {
+	public void insertTest() throws Exception {
 		StudentDao dao = new StudentDao();
-		List<Integer> ids = new ArrayList<Integer>();
-		ids.add(2);
-		ids.add(4);
-		ids.add(6);
-		ids.add(8);
-		dao.deletList(ids);
+		dao.dyInsert(new Student(17,"happy", 6666.88));
 	}
 }
