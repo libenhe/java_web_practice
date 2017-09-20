@@ -56,8 +56,11 @@
 #### (14)  struts-spring整合  
 #### (15)  spring-hibernate整合  
 #### (16_hrsys) struts、hibernate、spring 整合 
-#### (17)springMVC案例
-  
+#### (17)springMVC案例  
+
+#### (16_mybatispaging)mybatis分页查询，包括有条件分页以及无条件分页  
+
+#### (17_mybatisdynamic)mybaits动态SQL语句操作
    
   
 
